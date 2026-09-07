@@ -19,7 +19,7 @@
   }
   h1 {
     text-align: center;
-    color: #1b5e3a;
+    color: #4B0082;
     font-size: 1.6em;
     margin-bottom: 4px;
   }
@@ -32,7 +32,7 @@
   #scoreBar {
     position: sticky;
     top: 0;
-    background: #1b5e3a;
+    background: #4B0082;
     color: white;
     text-align: center;
     padding: 12px;
@@ -117,7 +117,7 @@
     background: #f0f0f0;
   }
   button.check-btn {
-    background: #1b5e3a;
+    background: #4B0082;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -149,13 +149,63 @@
     cursor: pointer;
   }
   #resetBtn:hover { background: #a5301f; }
+  #topBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  #resetBtnTop {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  #shareBtn {
+    background: #4B0082;
+    color: white;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  #shareBtn svg { width: 20px; height: 20px; }
+  #shareToast {
+    display: none;
+    text-align: center;
+    font-size: 0.9em;
+    color: #4B0082;
+    margin-top: -8px;
+    margin-bottom: 12px;
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>Geography Study Quiz</h1>
   <div class="subtitle">Ch. 1 — Maps, Globes, Latitude/Longitude, Map Types</div>
-  <button id="resetBtnTop" style="display:block; margin: 0 auto 16px auto; background:#c0392b; color:white; border:none; padding:10px 22px; font-size:1em; border-radius:10px; cursor:pointer;">Reset Quiz</button>
+  <div id="topBar">
+    <button id="resetBtnTop">Reset Quiz</button>
+    <button id="shareBtn" title="Share this quiz" aria-label="Share this quiz">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+      </svg>
+    </button>
+  </div>
+  <div id="shareToast">Link copied to clipboard!</div>
   <div id="scoreBar">Score: 0 / 30</div>
   <div id="quiz"></div>
   <button id="resetBtn">Reset Quiz</button>
@@ -294,6 +344,32 @@ function resetQuiz() {
 
 document.getElementById("resetBtn").addEventListener("click", resetQuiz);
 document.getElementById("resetBtnTop").addEventListener("click", resetQuiz);
+
+document.getElementById("shareBtn").addEventListener("click", async () => {
+  const shareData = {
+    title: document.title,
+    text: "Check out this Geography Study Quiz!",
+    url: window.location.href
+  };
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+    } catch (err) {
+      // User canceled the share sheet or it failed silently — no action needed.
+    }
+  } else if (navigator.clipboard) {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      const toast = document.getElementById("shareToast");
+      toast.style.display = "block";
+      setTimeout(() => { toast.style.display = "none"; }, 2500);
+    } catch (err) {
+      alert("Copy this link to share: " + window.location.href);
+    }
+  } else {
+    alert("Copy this link to share: " + window.location.href);
+  }
+});
 
 renderQuiz();
 updateScore();
