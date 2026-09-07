@@ -105,38 +105,6 @@
     border-radius: 4px;
     font-size: 0.98em;
   }
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 1.05em;
-    border: 2px solid #ccd;
-    border-radius: 8px;
-    margin-bottom: 8px;
-  }
-  input[type="text"]:disabled {
-    background: #f0f0f0;
-  }
-  button.check-btn {
-    background: #4B0082;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  button.check-btn:disabled {
-    background: #aaa;
-    cursor: default;
-  }
-  .compare-box {
-    margin-top: 10px;
-    padding: 10px;
-    background: #eef2f7;
-    border-left: 4px solid #6c8ebf;
-    border-radius: 4px;
-    font-size: 0.98em;
-  }
   #resetBtn {
     display: block;
     margin: 24px auto 40px auto;
@@ -213,44 +181,40 @@
 
 <script>
 const questions = [
-  { type:"mc", q:"What is a globe?", options:["A flat drawing of Earth","A three-dimensional, spherical model of Earth","A type of map legend","A line of latitude"], correct:1 },
-  { type:"mc", q:"What is a map?", options:["A two-dimensional, flat representation of Earth","A spherical model of Earth","A compass","A satellite photo only"], correct:0 },
-  { type:"sa", q:"Why isn't a globe practical for finding your way to a friend's house?", answer:"It would have to be too big to carry around and still show enough detail.", alts:["too big","not portable","would need to be huge to see small areas","too big to carry"] },
-  { type:"mc", q:"On a map, what does the title tell you?", options:["The distance scale","The subject of the map","The direction north","The map's legend"], correct:1 },
-  { type:"sa", q:"What do symbols on a map represent?", answer:"Information such as natural resources and economic activities.", alts:["resources and activities","things like industries or products","natural resources and economic activities"] },
-  { type:"mc", q:"What are labels on a map?", options:["Colors showing elevation","The names of places like cities, countries, rivers, and mountains","Lines of latitude","The map's scale"], correct:1 },
-  { type:"sa", q:"What does the color blue usually represent on a map?", answer:"Water", alts:["oceans and lakes","bodies of water","oceans, lakes, rivers"] },
-  { type:"mc", q:"What is a map legend (or key) used for?", options:["Showing directions","Explaining what the symbols and colors on a map mean","Showing the title","Measuring distance"], correct:1 },
-  { type:"mc", q:"What does a compass rose show?", options:["Elevation levels","The four directions: north, south, east, west","Population density","A locator globe"], correct:1 },
-  { type:"sa", q:"What is the purpose of a locator globe on a map?", answer:"It shows the specific area of the world shown on the larger map.", alts:["shows where the map area is located on Earth","gives context of location","shows where on Earth the map is"] },
-  { type:"mc", q:"Lines of latitude run:", options:["North to south, parallel to the prime meridian","East to west, parallel to the equator","Diagonally across the globe","Only through Greenwich, England"], correct:1 },
-  { type:"sa", q:"What is the equator?", answer:"The center line of latitude (0 degrees), dividing Earth into Northern and Southern Hemispheres.", alts:["0 degrees latitude","the line that splits Earth into north and south halves","the imaginary line at 0 latitude"] },
-  { type:"mc", q:"Lines of longitude run:", options:["East to west, parallel to the equator","North to south, from the North Pole to the South Pole","Only in the Southern Hemisphere","Diagonally"], correct:1 },
-  { type:"sa", q:"What is the prime meridian, and what is its degree measurement?", answer:"The line of longitude (0 degrees) that runs through Greenwich, England.", alts:["0 degrees longitude","the starting line for longitude","zero degrees, through Greenwich England"] },
-  { type:"mc", q:"A hemisphere is:", options:["A quarter of Earth","Half of Earth","A type of map projection","A line of latitude"], correct:1 },
-  { type:"sa", q:"What line divides Earth into the Northern and Southern Hemispheres?", answer:"The equator", alts:["0 degrees latitude","equator"] },
-  { type:"sa", q:"What line divides Earth into the Western and Eastern Hemispheres?", answer:"The prime meridian", alts:["0 degrees longitude","prime meridian"] },
-  { type:"sa", q:"Berlin, Germany has an absolute location of 52\u00b0N, 13\u00b0E. What does this tell you about Berlin's position?", answer:"It is 52 degrees north of the equator and 13 degrees east of the prime meridian.", alts:["52 north 13 east","north of the equator and east of the prime meridian","52 degrees north and 13 degrees east"] },
-  { type:"mc", q:"What does absolute location mean?", options:["A general description like \"near the coast\"","The exact point where a place is located, using latitude and longitude","The distance between two cities","A country's population"], correct:1 },
-  { type:"mc", q:"A large-scale map:", options:["Covers a large area but shows few details","Covers a small area but shows many details","Always shows the whole world","Never has a legend"], correct:1 },
-  { type:"mc", q:"A small-scale map:", options:["Covers a small area with many details","Covers a large area but shows fewer details","Only shows cities","Has no scale bar"], correct:1 },
-  { type:"sa", q:"Give an example of when you would use a large-scale map versus a small-scale map.", answer:"Large-scale for a small, detailed area (like a city); small-scale for a large area (like several states or a coastline).", alts:["large scale for small detailed area small scale for large area","large scale city small scale multiple states","large-scale for detail small-scale for big area"] },
-  { type:"mc", q:"A political map shows:", options:["Elevation and landforms","Features humans have created, like countries, states, and cities","Only oceans and rivers","Weather patterns"], correct:1 },
-  { type:"mc", q:"A physical map shows:", options:["Country borders only","Natural features like mountains, plains, valleys, deserts, and bodies of water","Population density","Voting districts"], correct:1 },
-  { type:"sa", q:"What is elevation?", answer:"The height of a physical feature above sea level.", alts:["how high something is above sea level","height above sea level"] },
-  { type:"sa", q:"What is relief?", answer:"The change in elevation from one place to another.", alts:["difference in height between places","change in elevation from place to place"] },
-  { type:"mc", q:"A cartographer is:", options:["A person who studies weather","A mapmaker","A geologist","A ship navigator"], correct:1 },
-  { type:"sa", q:"Why do cartographers use map projections?", answer:"To show Earth's curved surface on a flat map, reducing distortion.", alts:["because earth is round but maps are flat","to make the globe fit on paper","to reduce distortion when flattening the globe"] },
-  { type:"mc", q:"Which map projection shows direction accurately and is commonly used for navigation, but distorts the size/shape of land near the poles?", options:["Robinson","Mercator","Homolosine","Azimuthal"], correct:1 },
-  { type:"mc", q:"Which projection resembles the flattened peel of an orange and shows land shapes/areas accurately, but not distances?", options:["Winkel Tripel","Mercator","Homolosine","Azimuthal"], correct:2 }
+  { q:"What is a globe?", options:["A flat drawing of Earth","A three-dimensional, spherical model of Earth","A type of map legend","A line of latitude"], correct:1 },
+  { q:"What is a map?", options:["A two-dimensional, flat representation of Earth","A spherical model of Earth","A compass","A satellite photo only"], correct:0 },
+  { q:"Why isn't a globe practical for everyday tasks like finding a friend's house?", options:["It doesn't show water","It would need to be enormous to show enough detail","It has no legend","It doesn't have a compass rose"], correct:1 },
+  { q:"On a map, what does the title tell you?", options:["The distance scale","The subject of the map","The direction north","The map's legend"], correct:1 },
+  { q:"What do symbols on a map represent?", options:["Distances only","Information such as natural resources and economic activities","Names of cities","Elevation levels"], correct:1 },
+  { q:"What are labels on a map?", options:["Colors showing elevation","The names of places like cities, countries, rivers, and mountains","Lines of latitude","The map's scale"], correct:1 },
+  { q:"What does the color blue usually represent on a map?", options:["Mountains","Water","Deserts","Cities"], correct:1 },
+  { q:"What is a map legend (or key) used for?", options:["Showing directions","Explaining what the symbols and colors on a map mean","Showing the title","Measuring distance"], correct:1 },
+  { q:"What does a compass rose show?", options:["Elevation levels","The four directions: north, south, east, west","Population density","A locator globe"], correct:1 },
+  { q:"What is the purpose of a locator globe on a map?", options:["To show map symbols","To show the specific area of the world shown on the larger map","To show elevation","To measure distance"], correct:1 },
+  { q:"Lines of latitude run:", options:["North to south, parallel to the prime meridian","East to west, parallel to the equator","Diagonally across the globe","Only through Greenwich, England"], correct:1 },
+  { q:"What is the equator?", options:["A line of longitude at 90°","The center line of latitude (0°), dividing Earth into Northern and Southern Hemispheres","The line through Greenwich, England","A line that only appears on physical maps"], correct:1 },
+  { q:"Lines of longitude run:", options:["East to west, parallel to the equator","North to south, from the North Pole to the South Pole","Only in the Southern Hemisphere","Diagonally"], correct:1 },
+  { q:"What is the prime meridian, and what is its degree measurement?", options:["The line of longitude (0°) that runs through Greenwich, England","The line of latitude (0°) at the equator","A line at 180° longitude","The center of the Eastern Hemisphere"], correct:0 },
+  { q:"A hemisphere is:", options:["A quarter of Earth","Half of Earth","A type of map projection","A line of latitude"], correct:1 },
+  { q:"What line divides Earth into the Northern and Southern Hemispheres?", options:["The prime meridian","The equator","The Tropic of Cancer","The International Date Line"], correct:1 },
+  { q:"What line divides Earth into the Western and Eastern Hemispheres?", options:["The equator","The prime meridian","The Tropic of Capricorn","A line of latitude"], correct:1 },
+  { q:"Berlin, Germany has an absolute location of 52°N, 13°E. What does this tell you about Berlin's position?", options:["It is 52° south of the equator and 13° west of the prime meridian","It is 52° north of the equator and 13° east of the prime meridian","It is located exactly on the equator","It is located exactly on the prime meridian"], correct:1 },
+  { q:"What does absolute location mean?", options:["A general description like \"near the coast\"","The exact point where a place is located, using latitude and longitude","The distance between two cities","A country's population"], correct:1 },
+  { q:"A large-scale map:", options:["Covers a large area but shows few details","Covers a small area but shows many details","Always shows the whole world","Never has a legend"], correct:1 },
+  { q:"A small-scale map:", options:["Covers a small area with many details","Covers a large area but shows fewer details","Only shows cities","Has no scale bar"], correct:1 },
+  { q:"Which situation calls for a large-scale map instead of a small-scale map?", options:["Driving across several states","Navigating the streets of a single downtown area","Viewing the whole world at once","Comparing continents"], correct:1 },
+  { q:"A political map shows:", options:["Elevation and landforms","Features humans have created, like countries, states, and cities","Only oceans and rivers","Weather patterns"], correct:1 },
+  { q:"A physical map shows:", options:["Country borders only","Natural features like mountains, plains, valleys, deserts, and bodies of water","Population density","Voting districts"], correct:1 },
+  { q:"What is elevation?", options:["The change in height between two places","The height of a physical feature above sea level","The distance between lines of latitude","The direction a river flows"], correct:1 },
+  { q:"What is relief?", options:["The height of a feature above sea level","The change in elevation from one place to another","The color used to show water","The scale of a map"], correct:1 },
+  { q:"A cartographer is:", options:["A person who studies weather","A mapmaker","A geologist","A ship navigator"], correct:1 },
+  { q:"Why do cartographers use map projections?", options:["To label countries and cities","To show Earth's curved surface on a flat map, reducing distortion","To measure distances exactly","To add legends to maps"], correct:1 },
+  { q:"Which map projection shows direction accurately and is commonly used for navigation, but distorts the size/shape of land near the poles?", options:["Robinson","Mercator","Homolosine","Azimuthal"], correct:1 },
+  { q:"Which projection resembles the flattened peel of an orange and shows land shapes/areas accurately, but not distances?", options:["Winkel Tripel","Mercator","Homolosine","Azimuthal"], correct:2 }
 ];
 
 let score = 0;
 let answered = new Array(questions.length).fill(false);
-
-function normalize(str) {
-  return str.toLowerCase().replace(/[^\w\s]/g, "").replace(/\s+/g, " ").trim();
-}
 
 function updateScore() {
   document.getElementById("scoreBar").textContent = "Score: " + score + " / " + questions.length;
@@ -267,17 +231,11 @@ function renderQuiz() {
     let inner = `<div class="qnum">Question ${i + 1} of ${questions.length}</div>
                  <div class="qtext">${q.q}</div>`;
 
-    if (q.type === "mc") {
-      inner += `<div class="options" id="opts${i}">`;
-      q.options.forEach((opt, oi) => {
-        inner += `<div class="option" onclick="answerMC(${i}, ${oi})">${opt}</div>`;
-      });
-      inner += `</div><div class="feedback" id="fb${i}"></div>`;
-    } else {
-      inner += `<input type="text" id="input${i}" placeholder="Type your answer here...">
-                 <button class="check-btn" id="btn${i}" onclick="answerSA(${i})">Check</button>
-                 <div class="feedback" id="fb${i}"></div>`;
-    }
+    inner += `<div class="options" id="opts${i}">`;
+    q.options.forEach((opt, oi) => {
+      inner += `<div class="option" onclick="answerMC(${i}, ${oi})">${opt}</div>`;
+    });
+    inner += `</div><div class="feedback" id="fb${i}"></div>`;
 
     div.innerHTML = inner;
     container.appendChild(div);
@@ -302,34 +260,6 @@ function answerMC(qi, oi) {
     opts[q.correct].classList.add("correct");
     fb.innerHTML = "&#10060; Not quite. The correct answer is highlighted above.";
     fb.className = "feedback wrong-text";
-  }
-  updateScore();
-}
-
-function answerSA(qi) {
-  if (answered[qi]) return;
-  const q = questions[qi];
-  const inputEl = document.getElementById("input" + qi);
-  const userVal = normalize(inputEl.value);
-  if (!userVal) return;
-
-  answered[qi] = true;
-  inputEl.disabled = true;
-  document.getElementById("btn" + qi).disabled = true;
-
-  const acceptable = [q.answer, ...(q.alts || [])].map(normalize);
-  const isMatch = acceptable.includes(userVal);
-
-  const fb = document.getElementById("fb" + qi);
-  if (isMatch) {
-    fb.innerHTML = "&#9989; Correct!";
-    fb.className = "feedback correct-text";
-    score++;
-  } else {
-    fb.innerHTML = `Here's the answer to compare:
-      <div class="compare-box">${q.answer}</div>
-      <span style="font-weight:normal; font-size:0.9em; color:#667;">(If your answer means the same thing in different words, that's okay!)</span>`;
-    fb.className = "feedback";
   }
   updateScore();
 }
