@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#1f3a5f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Homework">
+<title>Protected Homework Block</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;font-size:20px;line-height:1.35;color:#1b1b1b;background:#f6f7f9}
+header{background:#1f3a5f;color:#fff;padding:14px 16px}
+header h1{margin:0;font-size:24px}
+header p{margin:2px 0 0;font-size:15px;opacity:.85}
+nav{display:flex;gap:6px;padding:8px;background:#e8eef6;position:sticky;top:0;z-index:5;overflow-x:auto}
+nav button{flex:1;min-width:90px;padding:12px 8px;font-size:17px;font-weight:700;border:2px solid #1f3a5f;background:#fff;color:#1f3a5f;border-radius:10px}
+nav button.on{background:#1f3a5f;color:#fff}
+main{max-width:720px;margin:0 auto;padding:12px}
+section{display:none}section.on{display:block}
+h2{color:#1f3a5f;font-size:22px;margin:14px 0 6px}
+.info{background:#e8eef6;border-radius:10px;padding:10px 14px;margin:10px 0;font-size:17px}
+.warn{background:#fde8e4;border-radius:10px;padding:10px 14px;margin:10px 0;font-size:17px}
+.small{font-size:15px;color:#555}
+.kid{background:#fff3b0;border:3px solid #d98e04;border-radius:12px;overflow:hidden}
+.kid label{display:flex;align-items:center;gap:14px;padding:14px;border-bottom:2px solid #d98e04;cursor:pointer}
+.kid label:last-child{border-bottom:0}
+.kid input{width:38px;height:38px;flex:none;accent-color:#2e7d32}
+.kid b{font-size:22px;display:block}
+.kid span{color:#555;font-size:17px}
+.kid input:checked~div{opacity:.55;text-decoration:line-through}
+.timer{text-align:center;background:#fff;border:2px solid #1f3a5f;border-radius:14px;padding:12px;margin:10px 0}
+.timer .t{font-size:64px;font-weight:800;font-variant-numeric:tabular-nums;color:#1f3a5f}
+.timer .m{font-size:20px;font-weight:700}
+.timer.brk{background:#e3f6e6;border-color:#2e7d32}.timer.brk .t{color:#2e7d32}
+.btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+button.b{padding:12px 18px;font-size:18px;font-weight:700;border-radius:10px;border:2px solid #1f3a5f;background:#fff;color:#1f3a5f}
+button.go{background:#1f3a5f;color:#fff}
+table{width:100%;border-collapse:collapse;font-size:17px;background:#fff}
+td,th{border:1px solid #9aa7b8;padding:8px;text-align:left;vertical-align:top}
+th{background:#e8eef6}
+input[type=text]{width:100%;font-size:17px;padding:8px;border:1px solid #9aa7b8;border-radius:6px}
+.reset{margin:18px 0 30px;text-align:center}
+</style></head><body>
+<header><h1>Protected Homework Block</h1><p>Same time, same place, same order. Kids run it, parents check it.</p></header>
+<nav id="nav">
+<button data-s="dru" class="on">Dru</button><button data-s="mar">Margot</button><button data-s="mw">Mon / Wed</button><button data-s="gp">Grandparent</button><button data-s="sch">Schedule</button>
+</nav>
+<main>
+
+<section id="dru" class="on">
+<h2>Dru: home days, 3:50 to 5:00</h2>
+<div class="timer" id="tm"><div class="m" id="tmm">Ready: 15 min work</div><div class="t" id="tmt">15:00</div>
+<div class="btns"><button class="b go" id="tgo">Start</button><button class="b" id="tpa">Pause</button><button class="b" id="trs">Reset</button></div>
+<div class="small" style="margin-top:6px">Rings and switches between 15 min work and 5 min break. Tap Start when you begin each one.</div></div>
+<h2>Your turn: check each box</h2>
+<div class="kid" data-k="dru">
+<label><input type="checkbox"><div><b>1. LAND</b><span>snack, water, bathroom, move (10 min)</span></div></label>
+<label><input type="checkbox"><div><b>2. DUMP</b><span>backpack empties onto the IN tray</span></div></label>
+<label><input type="checkbox"><div><b>3. WORK block 1</b><span>easiest one first (15 min, then break)</span></div></label>
+<label><input type="checkbox"><div><b>Work block 2</b><span>next one (15 min, then break)</span></div></label>
+<label><input type="checkbox"><div><b>Work block 3</b><span>last one (15 min)</span></div></label>
+<label><input type="checkbox"><div><b>4. PACK UP</b><span>work in DONE folder, planner signed, backpack by the door</span></div></label>
+</div>
+<div class="info"><b>Done looks like:</b> every box is checked, the DONE folder has the finished work, and the backpack is by the door.</div>
+<div class="warn"><b>If it goes sideways:</b> if Dru is frustrated, stop. Pause or move for a minute, switch to an easier problem, then come back to the first one. No new teaching during a meltdown.</div>
+<p class="small"><b>Parent check at 5:00:</b> look at the boxes and point at any empty one. Do not say the step out loud.</p>
+</section>
+
+<section id="mar">
+<h2>Margot: home days, 3:50 to about 4:30</h2>
+<div class="info"><b>Quick cue:</b> timer on, start. When it rings, stop and show a parent.</div>
+<div class="timer" id="tm2"><div class="t" id="tmt2">20:00</div>
+<div class="btns"><button class="b go" id="tgo2">Start 20 min</button><button class="b" id="tpa2">Pause</button><button class="b" id="trs2">Reset</button></div></div>
+<h2>Your turn: tap each box</h2>
+<div class="kid" data-k="mar">
+<label><input type="checkbox"><div><b>1. LAND</b><span>snack, water, move</span></div></label>
+<label><input type="checkbox"><div><b>2. DUMP</b><span>backpack on the IN tray</span></div></label>
+<label><input type="checkbox"><div><b>3. WORK</b><span>timer on, 20 minutes</span></div></label>
+<label><input type="checkbox"><div><b>4. SHOW ME</b><span>show a parent your work</span></div></label>
+<label><input type="checkbox"><div><b>5. PACK UP</b><span>work in DONE folder, backpack by the door</span></div></label>
+</div>
+<div class="info"><b>Done looks like:</b> all five boxes are checked and a parent has seen your work.</div>
+<div class="warn"><b>If it goes sideways:</b> if Margot drifts, the parent points at the checklist and says nothing else.</div>
+<p class="small">[Guessing] 20 minutes and one block suit Margot. Test for two weeks, then give her more ownership.</p>
+</section>
+
+<section id="mw">
+<h2>Monday: basketball 5:30 to 7 (Margot)</h2>
+<table><tr><th>Time</th><th>Step</th></tr>
+<tr><td>3:50</td><td>Land (both girls)</td></tr>
+<tr><td>4:00</td><td>Dru: three 15/5 blocks, done by 4:55. Margot: one 20 min block, done by 4:30, then basketball bag by the door.</td></tr>
+<tr><td>5:00</td><td>Early dinner (before practice) <b>or</b> late dinner (after 7). Pick one and keep it.</td></tr>
+<tr><td>5:30</td><td>Practice starts. Homework is already done.</td></tr></table>
+<p class="small">If homework slips past 5:00, stop and flag it on the planner. Practice does not move.</p>
+<h2>Wednesday: church about 6 to 7 or 7:30</h2>
+<table><tr><th>Time</th><th>Step</th></tr>
+<tr><td>3:50</td><td>Land (both girls)</td></tr>
+<tr><td>4:00</td><td>Dru: two 15/5 blocks, done by 4:40. Margot: one 20 min block, done by 4:30.</td></tr>
+<tr><td>4:45</td><td>Free time, then an early dinner so you can leave for church.</td></tr>
+<tr><td>After church</td><td>Only if something is due tomorrow: one 15 min block, 7:45 to 8:00, then bedtime routine.</td></tr></table>
+<p class="small">Not finished? Write "Left: ___" on the planner and do it Thursday at 4:00.</p>
+<div class="warn"><b>If it goes sideways:</b> cut the block short, write what is left on the planner, and keep the evening on time.</div>
+</section>
+
+<section id="gp">
+<h2>Grandparent handoff</h2>
+<div class="info">Homework either happens there at 4:00 or gets flagged for home. It never just gets skipped. The parent who owns that day's check reads this at pickup.</div>
+<table>
+<tr><td>Date</td><td><input type="text" data-f="gp1"></td></tr>
+<tr><td>Dru's homework</td><td><input type="text" data-f="gp2"></td></tr>
+<tr><td>Margot's homework</td><td><input type="text" data-f="gp3"></td></tr>
+<tr><td>Done there?</td><td><input type="text" data-f="gp4" placeholder="Dru: yes/moved home. Margot: yes/moved home"></td></tr>
+<tr><td>Planner signed?</td><td><input type="text" data-f="gp5"></td></tr>
+<tr><td>Flag for home</td><td><input type="text" data-f="gp6"></td></tr></table>
+<h2>What the grandparent does</h2>
+<p>1. Snack and water first.<br>2. At 4:00 start the timer. Dru: 15 work / 5 break. Margot: one 20 min block.<br>3. Stay nearby, do not hover. If a problem is too hard, write it on the card and move on.<br>4. Fill in the card, finished work in the DONE folder.</p>
+<div class="warn"><b>If it goes sideways:</b> if it cannot happen there, write "moved home." The parent runs the standard block at 4:00 once home, or 6:30 after dinner.</div>
+</section>
+
+<section id="sch">
+<h2>Home-day schedule</h2>
+<table><tr><th>Time</th><th>What</th><th>Dru</th><th>Margot</th></tr>
+<tr><td>3:50</td><td>Land</td><td>10 min</td><td>10 min</td></tr>
+<tr><td>4:00</td><td>Dump, then work</td><td>15/5 x 3</td><td>20 min</td></tr>
+<tr><td>4:55</td><td>Pack up, show a parent</td><td>DONE folder</td><td>"Show me"</td></tr>
+<tr><td>5:00</td><td>Free time until dinner (6 to 7)</td><td>Free</td><td>Free</td></tr></table>
+<p class="small">[Guessing] Assumes home by about 3:45. Shift to match, then hold it fixed for two weeks.</p>
+<div class="info"><b>Start small:</b> weeks 1 and 2 are Land, Dump, work block, Pack up. Nothing else. Then add one change per week, maximum.</div>
+<div class="info"><b>Owner:</b> one parent owns each day's check. If both "kind of" own it, it won't happen.</div>
+</section>
+
+<div class="reset"><button class="b" id="clr">Clear today's boxes</button></div>
+</main>
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+function ls(){try{return window.localStorage}catch(e){return null}}
+function get(k){try{var s=ls();return s?s.getItem(k):null}catch(e){return null}}
+function put(k,v){try{var s=ls();if(s)s.setItem(k,v)}catch(e){}}
+var today=new Date().toISOString().slice(0,10);
+$$("nav button").forEach(function(b){b.onclick=function(){
+$$("nav button").forEach(function(x){x.classList.remove("on")});b.classList.add("on");
+$$("section").forEach(function(x){x.classList.remove("on")});$("#"+b.dataset.s).classList.add("on");window.scrollTo(0,0)}});
+$$(".kid").forEach(function(g){var key="phb-"+today+"-"+g.dataset.k;var saved=[];
+try{saved=JSON.parse(get(key)||"[]")}catch(e){}
+var boxes=g.querySelectorAll("input");
+boxes.forEach(function(b,i){b.checked=!!saved[i];b.onchange=function(){
+var a=[];boxes.forEach(function(x){a.push(x.checked)});put(key,JSON.stringify(a))}})});
+$$("input[type=text]").forEach(function(i){i.value=get("phb-"+today+"-"+i.dataset.f)||"";i.oninput=function(){put("phb-"+today+"-"+i.dataset.f,i.value)}});
+$("#clr").onclick=function(){$$(".kid input").forEach(function(b){b.checked=false});$$(".kid").forEach(function(g){put("phb-"+today+"-"+g.dataset.k,"[]")})};
+function beep(){try{var C=window.AudioContext||window.webkitAudioContext;var c=new C();var o=c.createOscillator();o.connect(c.destination);o.frequency.value=660;o.start();setTimeout(function(){o.stop()},500)}catch(e){}
+if(navigator.vibrate)navigator.vibrate([300,100,300])}
+function fmt(s){var m=Math.floor(s/60),r=s%60;return m+":"+(r<10?"0":"")+r}
+function Timer(o){var left=o.modes[0].s,mode=0,iv=null;
+function draw(){$(o.t).textContent=fmt(left);if(o.m){$(o.m).textContent=(o.modes[mode].brk?"BREAK: ":"WORK: ")+o.modes[mode].s/60+" min";$(o.box).classList.toggle("brk",!!o.modes[mode].brk)}}
+function stop(){if(iv){clearInterval(iv);iv=null}}
+function tick(){left--;if(left<=0){beep();stop();if(o.modes.length>1){mode=(mode+1)%o.modes.length}left=o.modes[mode].s;draw()}else draw()}
+$(o.go).onclick=function(){if(!iv){iv=setInterval(tick,1000)}};
+$(o.pa).onclick=stop;
+$(o.rs).onclick=function(){stop();mode=0;left=o.modes[0].s;draw()};draw()}
+Timer({t:"#tmt",m:"#tmm",box:"#tm",go:"#tgo",pa:"#tpa",rs:"#trs",modes:[{s:900},{s:300,brk:1}]});
+Timer({t:"#tmt2",go:"#tgo2",pa:"#tpa2",rs:"#trs2",modes:[{s:1200}]});
+})();
+if('serviceWorker' in navigator){try{navigator.serviceWorker.register('sw.js')}catch(e){}}
+</script></body></html>
